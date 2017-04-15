@@ -10,20 +10,20 @@
   <script src="https://unpkg.com/react@15/dist/react.js"></script>
   <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>      
   <script>
-    var MyComponent = React.createClass({
-      getInitialState: function(){
-      // ステートの初期化
-      return {status: 'Ready'};
-    },
+  // コンポーネントの定義
+  var MyComponent = React.createClass({
     render: function(){
-      // h1タグにステートの値を表示する
-      return React.DOM.h1(null, this.state.status);
+      return React.DOM.input({
+        type: 'text',
+        placeholder: '値を入力してenterを押下',
+        onKeypress: this.showAlert
+      });
+    },
+    showAlert: function(e){
+      if (e.key === 'Enter' && e.target.value) {
+        alert(e.target.value);
+      }
     }
-    });
-  // コンポーネントの利用
-  ReactDOM.render(
-    React.createElement(MyComponent),
-    document.getElementById('main')
-  );
+  });
   </script>
 </html>
