@@ -4,25 +4,30 @@
   <meta charset="utf-8">
   </head>
   <body>
+    <script src="https://unpkg.com/react@15/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>      
+  
     <div id="main"></div>
   </body>
 
-  <script src="https://unpkg.com/react@15/dist/react.js"></script>
-  <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>      
-  <script>
+<script>
   // コンポーネントの定義
   var MyComponent = React.createClass({
-    render: function(){
-      return React.DOM.input({
-        type: 'text',
-        placeholder: '値を入力してenterを押下',
-        onKeypress: this.showAlert
-      });
+    getInitialState: function(){
+      return {count: 0}
     },
-    showAlert: function(e){
-      if (e.key === 'Enter' && e.target.value) {
-        alert(e.target.value);
-      }
+    render: function(){
+      return React.DOM.div(
+        null,
+        React.DOM.input({
+          type: 'text',
+          onChange: this.doChange
+        }),
+        React.DOM.span(null,this.state.count)
+      );
+    },
+    doChange: function(e){
+      this.setState({count: e.target.value.length});
     }
   });
   </script>
