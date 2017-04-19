@@ -1,25 +1,21 @@
-const path = require('path');
-
 module.exports = {
-    entry: {
-        bundle: './src/app.js'
-    },
-    output: {
-        path: path.join(__dirname, 'public'),
-        // filename: '[name].js'
-        filename: 'test.js'
-    },
-    module: {
-        loaders: [
-            {
-                loader: 'babel-loader',
-                exclude: /node_modules/,
-                test: /\.js[x]?$/,
-                query: {
-                    cacheDirectory: true,
-                    presets: ['react', 'es2015']
-                }
-            }
-        ]
-    }
+  /* ビルドの起点となるファイルの設定 */
+  entry: __dirname + '/src/app.js',
+  /* 出力されるファイルの設定 */
+  output: {
+    path: __dirname + "/dist", // 出力先のパス
+    filename: 'bundle.js' // 出力先のファイル名
+  },
+  /* ソースマップをファイル内に出力させる場合は以下を追加 */
+  devtool: 'inline-source-map',
+  module: {
+    /* loaderの設定 */
+    loaders: [
+      {
+        test: /\.js$/, // 対象となるファイルの拡張子（正規表現可）
+        exclude: /node_modules/, // 除外するファイル/ディレクトリ（正規表現可）
+        loader: 'babel-loader' // 使用するloader
+      }
+    ]
+  }
 };

@@ -3,10 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "production": "webpack -p",
-    "develop": "webpack -d",
-    "watch": "webpack -d --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "webpack --watch --progress --colors",
+    "build": "webpack --config webpack-production.config.js --progress"
   },
   "repository": "https://github.com/yk0817/react_study.git",
   "author": "山本憲 <em072029@gmail.com>",
