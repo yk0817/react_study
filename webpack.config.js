@@ -1,10 +1,10 @@
 module.exports = {
   /* ビルドの起点となるファイルの設定 */
-  entry: __dirname + '/src/ch02/propsTypes.js',
+  entry: __dirname + '/src/ch02/state.js',
   /* 出力されるファイルの設定 */
   output: {
     path: __dirname + "/dist/ch02", // 出力先のパス
-    filename: 'propsTypes.js' // 出力先のファイル名
+    filename: 'state.js' // 出力先のファイル名
   },
   /* ソースマップをファイル内に出力させる場合は以下を追加 */
   devtool: 'inline-source-map',
