@@ -1,6 +1,6 @@
-## REACT勉強する
+## React勉強する
 
-!["勉強本"](https://images-fe.ssl-images-amazon.com/images/I/5113OopphaL.jpg)
+!["勉強本"](https://www.oreilly.co.jp/books/images/picture_large978-4-87311-788-1.jpeg)
 
 ##参考
 
