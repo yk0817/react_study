@@ -1,7 +1,7 @@
 {
   "name": "react_study",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "hello2.js",
   "scripts": {
     "watch": "webpack --watch --progress --colors",
     "build": "webpack --config webpack-production.config.js --progress"

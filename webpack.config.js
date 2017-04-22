@@ -1,10 +1,10 @@
 module.exports = {
   /* ビルドの起点となるファイルの設定 */
-  entry: __dirname + '/src/app.js',
+  entry: __dirname + '/src/hello2.js',
   /* 出力されるファイルの設定 */
   output: {
     path: __dirname + "/dist", // 出力先のパス
-    filename: 'bundle.js' // 出力先のファイル名
+    filename: 'hello2.js' // 出力先のファイル名
   },
   /* ソースマップをファイル内に出力させる場合は以下を追加 */
   devtool: 'inline-source-map',
