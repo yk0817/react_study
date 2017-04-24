@@ -12,6 +12,7 @@ var Excel = Rect.createClass({
       React.PropTypes.arrayOf(
         React.PropTypes.string
         
+        
       )
     ),
   },
