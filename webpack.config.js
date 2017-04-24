@@ -1,9 +1,9 @@
 module.exports = {
   /* ビルドの起点となるファイルの設定 */
-  entry: __dirname + '/src/ch03/table.js',
+  entry: __dirname + '/src/ch04/table.js',
   /* 出力されるファイルの設定 */
   output: {
-    path: __dirname + "/dist/ch03", // 出力先のパス
+    path: __dirname + "/dist/ch04", // 出力先のパス
     filename: 'table.js' // 出力先のファイル名
   },
   /* ソースマップをファイル内に出力させる場合は以下を追加 */
