@@ -1,35 +1,53 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import TodoInput from './TodoInput';
+import TodoList from './TodoList';
 
-const Hello = (props) => {
-  return <div>こんちわ {props.name}さん</div>
-};
-
-const BooleanNumber = (props) => {
-  return <div>数字or真偽値 {props.value}</div>
-};
-
-const Profile = (props) => {
-  return (
-    <ul>
-      <li>名前: {props.name}</li>
-      <li>誕生日: {props.birthDay}</li>
-    </ul>
-  )
-};
-
-const profile = {
-  name: '坂本りょうまー',
-  birthDay: '1982.02.01'
-}
 
 class App extends Component {
-  render() {
+  constructor(props){
+    super(props);
+    this.state = {
+      tasks: [
+        {
+          title: 'デフォルトTODO',
+          id: 0,
+        },
+      ],
+      uniqueId: 1,
+    };
+    this.addTodo = this.addTodo.bind(this);
+    this.resetTodo = this.resetTodo.bind(this);
+  }
+
+  addTodo(title) {
+    const {
+      tasks,
+      uniqueId,
+    } = this.state;
+    tasks.push({
+      title,
+      id: uniqueId,
+    }) ;
+    this.setState({
+      tasks,
+      uniqueId: uniqueId + 1,
+    });
+  }
+
+  resetTodo(){
+    this.setState({
+      tasks: [],
+    });
+  }
+
+
+  render(){
     return (
-      <div>
-        <Profile name='坂本龍馬' birthDay='1973.02.01'/>
-        <Profile {...profile} />
+      <div className="App">
+        <h1>TODO App</h1>
+        <button onClick={this.resetTodo}>reset</button>
+        <TodoInput addTodo = {this.addTodo} />
+        <TodoList tasks={this.state.tasks} />
       </div>
     );
   }
