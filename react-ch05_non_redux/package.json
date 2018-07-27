@@ -1,11 +1,8 @@
 {
-  "name": "react-ch04",
+  "name": "react-ch05",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "add": "^2.0.6",
-    "global": "^4.3.2",
-    "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4",
