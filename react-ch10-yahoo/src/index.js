@@ -3,10 +3,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'; // 追加
 import { ConnectedRouter } from 'react-router-redux';
 import createBrowserHistory from 'history/createBrowserHistory'; // 追加
-import './index.css';
 import App from './App';
 import createStore from './createStore';
-import registerServiceWorker from './registerServiceWorker';
 
 // historyのインスタンスを生成
 const history = createBrowserHistory();
@@ -26,4 +24,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-registerServiceWorker();

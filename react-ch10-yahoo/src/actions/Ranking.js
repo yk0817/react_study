@@ -1,44 +1,50 @@
 import fetchJsonp from 'fetch-jsonp';
 import qs from 'qs';
+import { replace } from 'react-router-redux';
 
 const API_URL = 'https://shopping.yahooapis.jp/ShoppingWebService/V1/json/categoryRanking';
-const APP_ID = 'dj00aiZpPUtHTGhyNnhTYUlpaiZzPWNvbnN1bWVyc2VjcmV0Jng9ODg';
+const APP_ID = 'dj00aiZpPVBVWWZrNG9iN1dEciZzPWNvbnN1bWVyc2VjcmV0Jng9ODk-';
 
-const startRequest = categoryId => ({
+const startRequest = category => ({
   type: 'START_REQUEST',
-  payload: { categoryId },
+  payload: { category },
 });
-
-// レスポンス受信
-const receiveData = (categoryId, error, response) => ({
-  type: "RECEIVE_DATA",
-  payload: { categoryId, error, response },
+const receiveData = (category, error, response) => ({
+  type: 'RECEIVE_DATA',
+  payload: { category, error, response },
 });
-
-// リクエスト完了
-const finishRequest = categoryId => ({
+const finishRequest = category => ({
   type: 'FINISH_REQUEST',
-  payload: { categoryId },
+  payload: { category },
 });
 
 // ランキングを取得する
 export const fetchRanking = categoryId => {
-  // redux-thunk
-  return async dispatch => {
-    dispatch(startRequest(categoryId));
+  // getState関数でstate.shopping.categoriesにアクセスする
+  return async (dispatch, getState) => {
+    // カテゴリIDに対応するstate.shopping.categoriesの要素を取得
+    const categories = getState().shopping.categories;
+    const category = categories.find(category => (category.id === categoryId));
+    // 対応するデータがない場合はトップページへリダイレクト
+    if (typeof category === 'undefined') {
+      dispatch(replace('/'));
+      return;
+    }
+
+    dispatch(startRequest(category)); // categoryIdからcategoryに変更
 
     const queryString = qs.stringify({
       appid: APP_ID,
       category_id: categoryId,
     });
-
     try {
       const responce = await fetchJsonp(`${API_URL}?${queryString}`);
       const data = await responce.json();
-      dispatch(receiveData(categoryId, null, data));
-    } catch (e) {
-      dispatch(receiveData(categoryId, e));
+      dispatch(receiveData(category, null, data)); // categoryIdからcategoryに変更
+    } catch (err) {
+      dispatch(receiveData(category, err)); // categoryIdからcategoryに変更
     }
-    dispatch(finishRequest(categoryId));
-  }
-}
+    // categoryIdからcategoryに変更
+    dispatch(finishRequest(category));
+  };
+};

@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
-import { Switch, Route, Redirect, Link } from 'react-router-dom';
-import Ranking from './containers/Ranking'
+import { Switch, Route, Redirect } from 'react-router-dom';
+import Ranking from './containers/Ranking';
+import Nav from './containers/Nav';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <ul>
-          <li><Link to="/all">すべてのカテゴリ</Link></li>
-          <li><Link to="/category/2502">パソコン、周辺機器</Link></li>
-          <li><Link to="/category/10002">本、雑誌、コミック</Link></li>
-        </ul>
+        <Nav />
         <Switch>
           <Route path="/all" component={Ranking} />
           <Route

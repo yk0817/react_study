@@ -1,7 +1,6 @@
 import fetchJsonp from 'fetch-jsonp';
 import qs from 'qs';
 
-
 const API_URL = '';
 const API_ID = '';
 
